@@ -1,6 +1,18 @@
 import Ember from 'ember';
+import ifthen from 'emberli/utils/ifthen';
+
+const { computed } = Ember;
 
 export default Ember.Controller.extend({
+  val: 249,
+  bigVal: computed.gt('val', 250),
+  feedback: ifthen('bigVal', 'This is a big number', 'Not so big'),
+
+
+
+
+
+
   courses: [{
     title: 'Phoenix Fundamentals',
     summary: 'Phoenix makes building robust, high-performance web applications easier and more fun than you ever thought possible.',
@@ -31,5 +43,11 @@ export default Ember.Controller.extend({
         height: 500
       }
     }
-  }]
+  }],
+
+  actions: {
+    talk(thingToSay) {
+      alert(thingToSay);
+    }
+  }
 });

@@ -25,7 +25,7 @@ test('Adding and removing languages', function(assert) {
   let course = Course.create();
   let otherCourse = Course.create();
   course.get('languages').addObject('js');
-  assert.equal(otherCourse.get('languages').length, 0, 'Adding languages to a course doesn not result in it being added to all courses');
+  assert.equal(otherCourse.get('languages').length, 0, 'Adding languages to a course does not result in it being added to all courses');
 });
 
 test('Getting a language from a language ID', function(assert) {

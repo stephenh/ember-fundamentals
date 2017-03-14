@@ -7,7 +7,8 @@ if (require.entries['emberli/components/course-list-item']) {
   });
 
   test('it renders', function(assert) {
-    this.render(hbs`{{course-list-item}}`);
+    this.set('m', {});
+    this.render(hbs`{{course-list-item model=m}}`);
     assert.equal(this.$().text().trim(), '');
   });
 
@@ -29,10 +30,11 @@ if (require.entries['emberli/components/course-list-item']) {
     assert.equal($components.find('.course-title').text().trim(), 'My Course', 'Course title can be found in a .course-title element, within the component');
     assert.equal($components.find('.course-summary').text().trim(), 'A course description', 'Course summary can be found in a .course-summary element, within the component');
     assert.equal($components.find('img.course-image').attr('src'), 'abc', 'Course image can be found in a .course-image img element, within the component');
+
   });
 
   test('Rendering performance optimizations', function(assert) {
-    this.set('model', {
+    this.set('m', {
       title: 'My Course',
       summary: 'A course description',
       'image-info': {
@@ -41,7 +43,7 @@ if (require.entries['emberli/components/course-list-item']) {
         }
       }
     })
-    this.render(hbs`{{course-list-item model=model}}`);
+    this.render(hbs`{{course-list-item model=m}}`);
 
     this.set('model.title', 'Other course');
     this.set('model.summary', 'Other course description');

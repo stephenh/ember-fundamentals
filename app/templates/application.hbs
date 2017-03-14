@@ -1,5 +1,33 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{two-inputs str="Hello World"}}
+
+<hr>
+
+<p>{{bigVal}}</p>
+{{feedback}}
+
+<p>
+
+<input type="range" value={{val}}
+  min=100 max=500
+ onchange={{action (mut val) value='target.value'}}>
+
+</p>
+
+{{!--
+{{#img-with-placeholder
+  classNames='kitty'
+  url=(placeholder-url w=302 h=200)
+  onPicClicked=(action 'talk' 'meow')
+  as | u cn |  
+}}
+ <h3>Meeeeeeow!</h3> {{val}} {{cn}}
+ <button onClick={{u}}>Click Me</button>
+{{/img-with-placeholder}}
+--}}
+
+{{#each courses as |course|}}
+  {{course-list-item model=course}}
+
+{{/each}}
 
 {{outlet}}
